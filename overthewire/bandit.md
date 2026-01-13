@@ -29,3 +29,8 @@
 - `cd inhere`
 - Check for non executable files of 1033 bytes: `find . -type f -size 1033c ! -executable`
 - Cat only returned file
+
+## level 6
+- need to search entire file system for file with multiple attributes (specific user, group, and size)
+- run `find / -type f -size 33c -user bandit7 -group bandit6 2>/dev/null`
+- NOTE: command returns many files with errors like "Permission denied" so it's best to redirect standard error to /dev/null (which disgards them)
