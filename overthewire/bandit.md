@@ -15,3 +15,7 @@
 ## level 2
 - run `ls -la`
 - run vim on cwd then select file or merely run `cat ./--spaces\ in\ this\ filename--`
+
+## level 3
+- cd into visible directory
+- cat hidden file
