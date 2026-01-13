@@ -39,3 +39,8 @@
 ## level 7
 - password is next to word millionth
 - run `cat data.txt | grep millionth`
+
+## level 8
+- uniq command compares adjacent lines and the -u flag checks that each line is followed by a unique line
+- because subsequent lines are checked, the data must be sorted first
+- run `sort data.txt | uniq -u`
