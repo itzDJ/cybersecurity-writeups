@@ -11,3 +11,7 @@
 ## level 1
 - run `ls -la`
 - run `vim .` and navigate to the file named "-" where the password is stored
+
+## level 2
+- run `ls -la`
+- run vim on cwd then select file or merely run `cat ./--spaces\ in\ this\ filename--`
