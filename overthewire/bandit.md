@@ -9,3 +9,5 @@
 - password is in readme (view with cat or vim)
 
 ## level 1
+- run `ls -la`
+- run `vim .` and navigate to the file named "-" where the password is stored
