@@ -19,3 +19,8 @@
 ## level 3
 - cd into visible directory
 - cat hidden file
+
+## level 4
+- cd into visible directory
+- run `file ./*` to see the file type of all the files
+- cat the file with human readable type (ASCII text)
