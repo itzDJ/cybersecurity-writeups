@@ -24,3 +24,8 @@
 - cd into visible directory
 - run `file ./*` to see the file type of all the files
 - cat the file with human readable type (ASCII text)
+
+## level 5
+- `cd inhere`
+- Check for non executable files of 1033 bytes: `find . -type f -size 1033c ! -executable`
+- Cat only returned file
