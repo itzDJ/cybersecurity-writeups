@@ -86,3 +86,11 @@ The password for the next level is stored in the file data.txt in one of the few
 - run `strings data.txt | grep =`
   - NOTE: if several equals are used instead of one as per the instructions, the password is even more apparent
 - password is one of relatively few returned lines (preceded by a bunch of equal signs)
+
+## level 10
+### problem
+The password for the next level is stored in the file data.txt, which contains base64 encoded data
+### solution
+- check help page for base64
+- peep -d flag to decode file
+- run `base64 -d data.txt`
