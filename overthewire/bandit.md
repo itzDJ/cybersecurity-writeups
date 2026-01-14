@@ -77,3 +77,12 @@ The password for the next level is stored in the file data.txt and is the only l
 - uniq command compares adjacent lines and the -u flag checks that each line is followed by a unique line
 - because subsequent lines are checked, the data must be sorted first
 - run `sort data.txt | uniq -u`
+
+## level 9
+### problem
+The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+### solution
+- strings command can find human readable strings in binary files
+- run `strings data.txt | grep =`
+  - NOTE: if several equals are used instead of one as per the instructions, the password is even more apparent
+- password is one of relatively few returned lines (preceded by a bunch of equal signs)
