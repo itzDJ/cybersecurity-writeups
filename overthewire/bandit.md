@@ -96,9 +96,9 @@ The password for the next level is stored in the file data.txt, which contains b
 - run `base64 -d data.txt`
 
 ## level 11
-## problem
+### problem
 The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
-## solution
+### solution
 - found solution in bash as well as python
 - rot13 in bash: `cat data.txt | tr "A-Za-z" "N-ZA-Mn-za-m"`
 - rot13 in python3 REPL
@@ -107,3 +107,8 @@ import codecs
 with open("data.txt") as f:
     codecs.decode(f.read(), "rot_13")
 ```
+
+## level 12
+### problem
+The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+### solution
