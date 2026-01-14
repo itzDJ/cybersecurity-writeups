@@ -94,3 +94,16 @@ The password for the next level is stored in the file data.txt, which contains b
 - check help page for base64
 - peep -d flag to decode file
 - run `base64 -d data.txt`
+
+## level 11
+## problem
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+## solution
+- found solution in bash as well as python
+- rot13 in bash: `cat data.txt | tr "A-Za-z" "N-ZA-Mn-za-m"`
+- rot13 in python3 REPL
+```python
+import codecs
+with open("data.txt") as f:
+    codecs.decode(f.read(), "rot_13")
+```
