@@ -112,3 +112,12 @@ with open("data.txt") as f:
 ### problem
 The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)
 ### solution
+- based on rules of the game and permissions on the filesystem, files cannot be created and removed just anywhere on the device
+- run `mktemp -d` to create a temporary directory and change into it
+- run `xxd -r ~/data.txt data` to reverse the hex dump located in ~/data.txt and create a binary file from it called data in our temp dir
+- run the file command on data and decompress based on file type
+  - if gzip, use mv to rename with .gz then run `gzip -d`
+  - if bzip2, run `bzip2 -d`
+  - if tar, run `tar -xf`
+- continue that process until the file type is ASCII text then cat the file
+- cleanup any temp files
