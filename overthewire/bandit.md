@@ -121,3 +121,11 @@ The password for the next level is stored in the file data.txt, which is a hexdu
   - if tar, run `tar -xf`
 - continue that process until the file type is ASCII text then cat the file
 - cleanup any temp files
+
+## level 13
+### problem
+The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Look at the commands that logged you into previous bandit levels, and find out how to use the key for this level.
+### solution
+- copy contents of ssh key located in home directory of bandit13 to somewhere on our host machine (maybe to file named `ssh_key`)
+- increase permission strictness on the private key: `chmod 600 ssh_key`
+- ssh into next level with the key: `ssh -i ssh_key bandit14@bandit.labs.overthewire.org -p 2220`
