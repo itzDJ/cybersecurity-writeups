@@ -129,3 +129,11 @@ The password for the next level is stored in /etc/bandit_pass/bandit14 and can o
 - copy contents of ssh key located in home directory of bandit13 to somewhere on our host machine (maybe to file named `ssh_key`)
 - increase permission strictness on the private key: `chmod 600 ssh_key`
 - ssh into next level with the key: `ssh -i ssh_key bandit14@bandit.labs.overthewire.org -p 2220`
+
+## level 14
+### problem
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+### solution
+- After signed into level from ssh private key, `cat /etc/bandit_pass/bandit14` as mentioned in previous level
+- Send that password to port 30000 on localhost using netcat: `cat /etc/bandit_pass/bandit14 | nc localhost 30000`
+- Password for next level is sent in return
