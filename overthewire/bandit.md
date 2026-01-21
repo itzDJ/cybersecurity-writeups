@@ -137,3 +137,10 @@ The password for the next level can be retrieved by submitting the password of t
 - After signed into level from ssh private key, `cat /etc/bandit_pass/bandit14` as mentioned in previous level
 - Send that password to port 30000 on localhost using netcat: `cat /etc/bandit_pass/bandit14 | nc localhost 30000`
 - Password for next level is sent in return
+
+## level 15
+### problem
+The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL/TLS encryption.
+### solution
+- use nmap's ncat instead of nc for easier ssl connection
+- run: `cat /etc/bandit_pass/bandit15 | ncat --ssl localhost 30001`
