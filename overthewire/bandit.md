@@ -162,3 +162,11 @@ There are 2 files in the homedirectory: passwords.old and passwords.new. The pas
 - run: `diff passwords.old passwords.new`
 - output shows the files only differ on one line
 - first string is from old file; second string is from new file (second is password for next level)
+
+## level 18
+### problem
+The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
+### solution
+- need to get contents of readme file before .bashrc logs out
+- execute a single command over ssh (since it's non-interactive, .bashrc never loads)
+- `ssh bandit18@bandit.labs.overthewire.org -p 2220 'cat readme'`
