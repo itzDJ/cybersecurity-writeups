@@ -144,3 +144,13 @@ The password for the next level can be retrieved by submitting the password of t
 ### solution
 - use nmap's ncat instead of nc for easier ssl connection
 - run: `cat /etc/bandit_pass/bandit15 | ncat --ssl localhost 30001`
+
+## level 16
+### problem
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL/TLS and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+### solution
+- find open ports from 31000 to 32000: `nmap -p 31000-32000 localhost`
+- connect to the returned ports one by one: `openssl s_client -connect localhost:<port> -quiet`
+- if a connection is made, paste the password for current level and click enter
+- repeat until an RSA private key is returned
+- save that key to host machine and modify permissions to `chmod 600` just like level 13
