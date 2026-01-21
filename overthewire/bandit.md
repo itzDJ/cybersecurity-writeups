@@ -154,3 +154,11 @@ The credentials for the next level can be retrieved by submitting the password o
 - if a connection is made, paste the password for current level and click enter
 - repeat until an RSA private key is returned
 - save that key to host machine and modify permissions to `chmod 600` just like level 13
+
+## level 17
+### problem
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+### solution
+- run: `diff passwords.old passwords.new`
+- output shows the files only differ on one line
+- first string is from old file; second string is from new file (second is password for next level)
