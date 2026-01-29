@@ -170,3 +170,10 @@ The password for the next level is stored in a file readme in the homedirectory.
 - need to get contents of readme file before .bashrc logs out
 - execute a single command over ssh (since it's non-interactive, .bashrc never loads)
 - `ssh bandit18@bandit.labs.overthewire.org -p 2220 'cat readme'`
+
+## level 19
+### problem
+To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.
+### solution
+- binary in home directory allows running commands as the user bandit20
+- run `./bandit20-do cat /etc/bandit_pass/bandit20`
