@@ -197,3 +197,17 @@ A program is running automatically at regular intervals from cron, the time-base
 - cronjob shows shell script is running at `/usr/bin/cronjob_bandit22.sh`
 - run `cat /usr/bin/cronjob_bandit22.sh`
 - the script shows the bandit22 password is copied to a tmp dir. cat the tmp dir for the next password
+
+## level 22
+### problem
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+### solution
+- similar solution to previous problem
+- look in /etc/cron.d/ for config related to level
+- run `ls /etc/cron.d/`
+- run `cat /etc/cron.d/cronjob_bandit23`
+- cronjob shows shell script is running at `/usr/bin/cronjob_bandit23.sh`
+- run `cat /usr/bin/cronjob_bandit23.sh`
+- shell script shows location to next password (so next two commands are from that shell script)
+- run a modified line (bandit23 instead of bandit22) in the shell script to find the location: `mytarget=$(echo I am user bandit23 | md5sum | cut -d ' ' -f 1)`
+- cat to find next password: `cat /tmp/$mytarget`
