@@ -184,5 +184,16 @@ There is a setuid binary in the homedirectory that does the following: it makes 
 ### solution
 - cat password from level 20 to netcat which sends it to whoever connects to port 1337
 - `cat /etc/bandit_pass/bandit20 | nc -l -p 1337&`
-- run the given command in home directory to connect
+- run the given command in home directory to connect to the port netcat is on and the password for next level will be returned
 - `./suconnect 1337`
+
+## level 21
+### problem
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+### solution
+- look in /etc/cron.d/ for config related to level
+- run `ls /etc/cron.d/`
+- run `cat /etc/cron.d/cronjob_bandit22`
+- cronjob shows shell script is running at `/usr/bin/cronjob_bandit22.sh`
+- run `cat /usr/bin/cronjob_bandit22.sh`
+- the script shows the bandit22 password is copied to a tmp dir. cat the tmp dir for the next password
