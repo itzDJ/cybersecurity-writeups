@@ -177,3 +177,12 @@ To gain access to the next level, you should use the setuid binary in the homedi
 ### solution
 - binary in home directory allows running commands as the user bandit20
 - run `./bandit20-do cat /etc/bandit_pass/bandit20`
+
+## level 20
+### problem
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+### solution
+- cat password from level 20 to netcat which sends it to whoever connects to port 1337
+- `cat /etc/bandit_pass/bandit20 | nc -l -p 1337&`
+- run the given command in home directory to connect
+- `./suconnect 1337`
