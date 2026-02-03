@@ -255,3 +255,27 @@ for pin in {0000..9999}; do
     echo "$password $pin"
 done | nc localhost 30002 | grep -v "Wrong"
 ```
+
+## level 25
+### problem
+Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.
+### solution
+- in bandit25, checek the shell for bandit26: `cat /etc/passwd | grep bandit26`
+- shell is /usr/bin/showtext
+- cat that file which we see runs more on login then exits
+- copy bandit26.sshkey in $HOME to host computer
+- to prevent instant exit, shrink terminal until more cannot output whole file at once
+- ssh into bandit26 on the shrunk terminal: `ssh -i bandit26.sshkey bandit26@bandit.labs.overthewire.org -p 2220`
+- assuming the terminal was shrunk correct and more was put in interative mode, click `v` to open vim
+- run following commands in vim to open shell
+```
+:set shell=/bin/bash
+:shell
+```
+- now that a shell is open, cat /etc/bandit_pass/bandit26
+
+## level 26
+### problem
+Good job getting a shell! Now hurry and grab the password for bandit27!
+### solution
+- while in the shell from the previous level, run `./bandit27-do cat /etc/bandit_pass/bandit27`
