@@ -338,3 +338,19 @@ From your local machine (not the OverTheWire machine!), clone the repository and
 - After creating the text file with the text as instructed in README.md, force add the file to be tracked: `git add -f key.txt`
 - run `git commit -m "any message here"`
 - run `git push`
+
+## level 32 → 33
+### problem
+After all this git stuff, it’s time for another escape. Good luck!
+### solution
+- ssh into problem
+- prompted with "WELCOME TO THE UPPERCASE SHELL"
+- put in shell with all commands forced uppercase making it so commands like `ls` don't work because the shell reads in `LS`
+- run `$0` which is the environment variable for name of the shell
+- this puts us in a new shell that's not forced uppercase
+- by running `bash`, we can see we're logged in as user bandit33 (or we can just run `whoami`)
+- cat password for bandit33: `cat /etc/bandit_pass/bandit33`
+
+## level 33 → 34
+### problem
+At this moment, level 34 does not exist yet.
