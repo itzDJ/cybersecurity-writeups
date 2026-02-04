@@ -300,3 +300,16 @@ From your local machine (not the OverTheWire machine!), clone the repository and
 - password is redacted so check `git log` for previous commits
 - there was a commit with message "add missing data"
 - run `git show <COMMIT_ID>` on that commit and copy password
+
+## level 29
+### problem
+There is a git repository at ssh://bandit29-git@bandit.labs.overthewire.org/home/bandit29-git/repo via the port 2220. The password for the user bandit29-git is the same as for the user bandit29.
+
+From your local machine (not the OverTheWire machine!), clone the repository and find the password for the next level. This needs git installed locally on your machine.
+### solution
+- run `git clone ssh://bandit29-git@bandit.labs.overthewire.org:2220/home/bandit29-git/repo`
+- cat the README.md in the repo
+- nothing there and nothing in `git log`
+- check for additional branches with `git branch -a`
+- switch into dev branch with `git checkout dev`
+- password is in README.md
