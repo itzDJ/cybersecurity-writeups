@@ -337,4 +337,4 @@ From your local machine (not the OverTheWire machine!), clone the repository and
 - .gitignore exists and ignores all text files
 - After creating the text file with the text as instructed in README.md, force add the file to be tracked: `git add -f key.txt`
 - run `git commit -m "any message here"`
-- git push
+- run `git push`
