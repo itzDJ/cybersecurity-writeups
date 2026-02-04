@@ -279,3 +279,12 @@ Logging in to bandit26 from bandit25 should be fairly easy… The shell for user
 Good job getting a shell! Now hurry and grab the password for bandit27!
 ### solution
 - while in the shell from the previous level, run `./bandit27-do cat /etc/bandit_pass/bandit27`
+
+## level 27
+### problem
+There is a git repository at ssh://bandit27-git@bandit.labs.overthewire.org/home/bandit27-git/repo via the port 2220. The password for the user bandit27-git is the same as for the user bandit27.
+
+From your local machine (not the OverTheWire machine!), clone the repository and find the password for the next level. This needs git installed locally on your machine.
+### solution
+- run `git clone ssh://bandit27-git@bandit.labs.overthewire.org:2220/home/bandit27-git/repo`
+- cat the README in the repo
