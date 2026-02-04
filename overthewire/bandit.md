@@ -233,12 +233,12 @@ NOTE 2: Keep in mind that your shell script is removed once executed, so you may
 ```bash
 #!/bin/bash
 
-cat /etc/bandit_pass/bandit24 > /tmp/[temp dir]/password
+cat /etc/bandit_pass/bandit24 > /tmp/<TEMP_DIR>/password
 ```
 - fix permissions: `chmod +x exploit.sh`
-- run `chmod 777 /tmp/[temp dir]`
+- run `chmod 777 /tmp/<TEMP_DIR>`
 - copy script from tmp to cron executed location: `cp exploit.sh /var/spool/bandit24/foo/`
-- in a minute when cron executes, a password file will create in /tmp/[temp dir] with the password to next level
+- in a minute when cron executes, a password file will create in /tmp/<TEMP_DIR> with the password to next level
 
 ## level 24
 ### problem
@@ -288,3 +288,15 @@ From your local machine (not the OverTheWire machine!), clone the repository and
 ### solution
 - run `git clone ssh://bandit27-git@bandit.labs.overthewire.org:2220/home/bandit27-git/repo`
 - cat the README in the repo
+
+## level 28
+### problem
+There is a git repository at ssh://bandit28-git@bandit.labs.overthewire.org/home/bandit28-git/repo via the port 2220. The password for the user bandit28-git is the same as for the user bandit28.
+
+From your local machine (not the OverTheWire machine!), clone the repository and find the password for the next level. This needs git installed locally on your machine.
+### solution
+- run `git clone ssh://bandit28-git@bandit.labs.overthewire.org:2220/home/bandit28-git/repo`
+- cat the README.md in the repo
+- password is redacted so check `git log` for previous commits
+- there was a commit with message "add missing data"
+- run `git show <COMMIT_ID>` on that commit and copy password
