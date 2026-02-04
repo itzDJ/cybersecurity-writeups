@@ -313,3 +313,15 @@ From your local machine (not the OverTheWire machine!), clone the repository and
 - check for additional branches with `git branch -a`
 - switch into dev branch with `git checkout dev`
 - password is in README.md
+
+## level 30 → 31
+### problem
+There is a git repository at ssh://bandit30-git@bandit.labs.overthewire.org/home/bandit30-git/repo via the port 2220. The password for the user bandit30-git is the same as for the user bandit30.
+
+From your local machine (not the OverTheWire machine!), clone the repository and find the password for the next level. This needs git installed locally on your machine.
+### solution
+- run `git clone ssh://bandit30-git@bandit.labs.overthewire.org:2220/home/bandit30-git/repo`
+- nothing in README.md, log, or branches
+- check for tags (reference that points to specific commits): `git tag`
+- uncovers tag named 'secret'
+- run `git tag secret` to reveal password
