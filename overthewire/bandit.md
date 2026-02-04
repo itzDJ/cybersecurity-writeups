@@ -325,3 +325,16 @@ From your local machine (not the OverTheWire machine!), clone the repository and
 - check for tags (reference that points to specific commits): `git tag`
 - uncovers tag named 'secret'
 - run `git tag secret` to reveal password
+
+## level 31 → 32
+### problem
+There is a git repository at ssh://bandit31-git@bandit.labs.overthewire.org/home/bandit31-git/repo via the port 2220. The password for the user bandit31-git is the same as for the user bandit31.
+
+From your local machine (not the OverTheWire machine!), clone the repository and find the password for the next level. This needs git installed locally on your machine.
+### solution
+- run `git clone ssh://bandit31-git@bandit.labs.overthewire.org:2220/home/bandit31-git/repo`
+- README.md says to create and push a text file to the remote repo
+- .gitignore exists and ignores all text files
+- After creating the text file with the text as instructed in README.md, force add the file to be tracked: `git add -f key.txt`
+- run `git commit -m "any message here"`
+- git push
